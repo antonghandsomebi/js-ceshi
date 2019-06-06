@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div{
+        width: 300px;
+        height: 300px;nsition: .5s;
+        border-radius: 50%;
+    }
+    .green{
+        background-color: #ff2ab8;
+        tra
+        background-color: #1994d2;
+        border-radius: 50%;
+    }
+</style>
+<script>
+    window.onload=function () {
+        let box=document.querySelector(".box")
+        box.addEventListener('click',function () {
+            this.classList.toggle("green")
+        })
+        box.addEventListener('click',fn)
+        function fn() {
+            let flag=box.classList.contains("green")
+            console.log(flag);
+            if (flag==true){
+                this.style.height="150px"
+                this.style.padding="50px"
+
+            }else {
+                this.style.height="300px"
+
+            }
+        }
+    }
+</script>
+<body>
+    <div class="box"></div>
+</body>
+</html>

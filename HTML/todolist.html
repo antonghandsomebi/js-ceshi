@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: #ffffff;
+
+        }
+        header{
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid wheat;
+        }
+        form{
+            width: 900px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+        }
+        form>input{
+            height: 30px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            margin-right: 20px;
+            background-color: #ffffff;
+            padding: 0 10px;
+        }
+        main{
+            width: 900px;
+            height: auto;
+            margin: 20px auto;
+        }
+        .tab{
+            display: flex;
+            height: 40px;
+            position: relative;
+        }
+        .tab>li{
+            flex-grow: 1;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+        }
+        .tab>li.hot{
+            /*background: #5ac8fa;*/
+            color:#ffffff;
+        }
+        .tab>div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 300px ;
+            height: 100%;
+            background: #1994d2;
+            z-index: -1;
+            transition: all ease .5s;
+        }
+        li.hot:nth-child(1)~.top{
+            transform: translate(0,0);
+        }
+        li.hot:nth-child(2)~.top{
+            transform: translate(100%,0);
+        }
+        li.hot:nth-child(3)~.top{
+            transform: translate(200%,0);
+        }
+        .content>li{
+            font-size: 20px;
+            padding: 0 20px;
+            line-height: 40px;
+            border-bottom: 1px solid aqua;
+        }
+        .content>li>p{
+            display: inline;
+        }
+        .content>li>time{
+            float: right;
+        }
+        del{
+            float: right;
+            text-decoration: solid;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+
+            window.addEventListener("load",function () {
+                let tab=document.querySelectorAll('.tab>li')
+                let prev=0;
+                let type='all';
+                let content=document.querySelector(".content")
+                let todolist =[
+                    {
+                        id:1,content:"端午节要打球",ctime:"219/6/4",status:true
+                    },
+                    {
+                        id:2,content:"端午节要陪对象",ctime:"219/6/4",status:true
+                    },
+                    {
+                        id:3,content:"端午节要陪对象",ctime:"219/6/4",status:false
+                    },
+                    {
+                        id:4,content:"端午节要陪对象",ctime:"219/6/4",status:false
+                    },
+                ];
+                tab.forEach(function (ele,index) {
+                    ele.onclick=function () {
+                        tab[prev].classList.remove("hot")
+                        this.classList.add("hot")
+                        prev=index;
+                        type=this.getAttribute("type");
+                        render(filterData(type));
+                    }
+                })
+                    tab[0].onclick();
+                content.onclick=function(e){
+                    let target=e.target;
+                    // console.log(target);
+                    let id=target.parentNode.id;
+                    console.log(target.nodeName);
+                    if (target.nodeName==="INPUT"){
+                        let ele=todolist.filter(ele=>ele.id==id)[0]
+                        ele.status=target.checked;
+                    }else if (target.nodeName==="DEL"){
+                        let index=todolist.findIndex(ele=>ele.id==id)
+                        todolist.splice(index,1);
+
+                    }
+                    render(filterData(type))
+                }
+                //添加事件
+                let forms=document.forms[0];//获取当前页面第一个表单；
+                let textBtn=forms.elements['content'];
+                let submitBtn=forms.elements[1]
+                // console.log(forms.elements);
+                // console.log(submitBtn);
+                submitBtn.onclick=function (e) {
+                    e.preventDefault();
+                    let obj=createObj();
+                    todolist.push(obj);
+                    forms.reset();
+                    render(filterData(type))
+                };
+
+                function createObj() {
+                    let id=todolist[todolist.length-1]+1;
+                    let content=textBtn.value;
+                    let ctime=new Date().toLocaleDateString();
+                    let status=false;
+                    return{id,content,ctime,status};
+                }
+                function filterData(type) {
+                    let arr=[];
+                    switch (type) {
+                        case "all":
+                            arr=todolist;
+                        break;
+                        case "done":
+
+                            arr=todolist.filter(ele=>ele.status);
+                            break;
+                        case "doing":
+                            arr=todolist.filter(ele=>!ele.status);
+                            break;
+                    }
+                    return arr;
+                }
+                //    渲染列表
+
+                render(todolist);
+                function render(arr) {
+                    let html="";
+                    arr.forEach(ele=>{
+                        if (ele.status){
+                            html+=`
+                                <li id="${ele.id}">
+                                    <input type="checkbox" checked>
+                                    <p>${ele.content}</p>
+                                    <del>X</del>
+                                    <time>${ele.ctime}</time>
+                                </li>
+                            `;
+                        }else {
+                            html+=`
+                                <li id="${ele.id}">
+                                    <input type="checkbox">
+                                    <p>${ele.content}</p>
+                                    <del>X</del>
+                                    <time>${ele.ctime}</time>
+                                </li>
+                            `;
+                        }
+                    })
+                    content.innerHTML=html;
+                }
+
+
+
+            })
+
+
+
+
+    </script>
+</head>
+<body>
+    <header>
+        <form action="">
+            <input type="text" placeholder="请输入代办事项" name="content" required>
+            <input type="submit" value="Submit">
+        </form>
+    </header>
+    <main>
+        <ul class="tab">
+            <li type="all">全部</li>
+            <li type="done">完成</li>
+            <li type="doing">未完</li>
+            <div class="top"></div>
+        </ul>
+        <ul class="content">
+            <li>
+                <input type="checkbox" checked> <p>端午节要打球</p> <time>2019/6/4</time>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>

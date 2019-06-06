@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        background-image: url("http://img.zcool.cn/community/0123205986fcfa0000002129ec6a7c.gif");
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    main{
+        width: 400px;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 20px;
+        border: 2px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
+    h1{
+        text-align: center;
+    }
+    div{
+        margin-top: 20px;
+    }
+    input{
+        width: 100%;
+        height: 48px;
+        border-radius: 10px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        outline: none;
+    }
+    input[type=text]:focus{
+        border-color: #00c1de;
+    }
+    input[type=button]{
+        background-color: #37dade;
+    }
+
+</style>
+<script>
+   window.onload=function () {
+        let inputs=document.getElementsByTagName("input")
+       inputs[2].onclick=function () {
+           let username=inputs[0].value.trim()
+           let password=inputs[1].value.trim()
+            if (username=="安彤"&&password=="123456"){
+                console.log(success);
+            } else{
+                location.assign('error.html')
+            }
+       }
+   }
+</script>
+<body>
+    <main>
+        <h1>login</h1>
+        <div><input type="text" placeholder="Username"></div>
+        <div><input type="text" placeholder="Password"></div>
+        <div><input type="button" value="提交"></div>
+    </main>
+</body>
+</html>

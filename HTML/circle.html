@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .pointer{
+            width: 10px;
+            height: 10px;
+            background-color: #ff2ab8;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .circle{
+            width: 10px;
+            height: 10px;
+            background-color: #ff2ab8;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="pointer"></div>
+    <script>
+        let pointer=document.querySelector('.pointer')
+        let r=200;
+        let n=12;
+        let number=3*n
+        let ang=2/n*Math.PI;
+
+        function putong(number,n,r) {
+            for (let i=0;i<n;i++){
+                if (i%number){
+
+                }
+                let rad=ang*i;
+                let lefts=r*Math.cos(rad);
+                let tops=r*Math.sin(rad);
+                let circle=document.createElement("div")
+
+                circle.classList.add("circle");
+                pointer.classList.add("circle")
+                circle.style.left=lefts+"px";
+                circle.style.top=tops+"px";
+                pointer.appendChild(circle)
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>
