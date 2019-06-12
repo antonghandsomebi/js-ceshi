@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../JS/jquery-3.4.1.js"></script>
+    <script src="../JS/poker.js"></script>
+</head>
+<style>
+    body{
+
+    }
+    .box{
+        width: 800px;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        background-image: url("../IMG/imgs/1529049_104515540085_2.jpg");
+    }
+    .poker{
+        width: 90px;
+        height: 120px;
+        background: #cccccc;
+        position: absolute;
+        left: 350px;
+        top: 0;
+        background-position: center;
+        background-size: cover;
+        border: 1px solid orange;
+    }
+    .active{
+        border: 2px solid red;
+    }
+    button{
+        width: 100px;
+        height: 30px;
+        border:none;
+        outline: none;
+        background: #1da577;
+        color: #cccccc;
+        position: absolute;
+        left: 500px;
+        bottom: 60px;
+        border-radius: 5px;
+    }
+    .leftBtn{
+        bottom: 10px;
+    }
+</style>
+<body>
+    <div class="box">
+        <div></div>
+    </div>
+    <button class="rightBtn">&gt;</button>
+    <button class="leftBtn">&lt;</button>
+    <h2>游戏规则</h2>
+    <p>点击两张牌，点数之和为14时会消去牌，<br>
+        全部消完游戏获胜,两个按钮功能自己发掘hihihihi</p>
+</body>
+</html>
