@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <p>what a lovely day</p>
+    <p>who is the handsomest guy</p>
+    <p>AT is the handsomest guy</p>
+    <ul>
+        <li>
+            <ul>
+                <li class="search">你不是抓到我了嘛.....</li>
+            </ul>
+        </li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p><b>Values: </b></p>
+    <form>
+        <input type="text" name="name" value="John"/>
+        <input type="text" name="password" value="password"/>
+        <input type="text" name="url" value="http://ejohn.org/"/>
+    </form>
+</body>
+<script>
+    $(function () {
+        console.log($('p'));
+        $("p").append( $("input").map(function(){
+            return $(this).val();
+        }).get().join(", ") );
+        console.log($("p"));
+        //     let p=$('p');
+    //     console.log(p.eq(2));
+    //     console.log(p.slice(1));
+    // })
+    // let arr=[
+    //     "a","b","c","d"
+    // ]
+    // console.log(arr.slice(0,-2));
+    // console.log(arr);
+
+    let li =$("li");
+    console.log(li);
+        console.log(li.hasClass('search'));
+        li.has('.search').css("color","red");
+        console.log(li.not(".search"));
+    })
+</script>
+</html>

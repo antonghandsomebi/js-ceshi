@@ -1,0 +1,90 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+}
+li{
+    list-style: none;
+}
+.banner{
+    height: 280px;
+    width: 1200px;
+    background: #e9eaed;
+    margin: 20px auto 2px;
+}
+.banner div.choose{
+    width: 620px;
+    height: 262px;
+    background-color: #e1dfe2;
+    float: left;
+    position: relative;
+}
+
+ul.choose{
+    width: 620px;
+    height: 262px;
+    position: relative;
+    overflow: hidden;
+}
+li.choose{
+    width: 620px;
+    height: 262px;
+    position: absolute;
+    left: 620px;
+    top: 0px;
+}
+li.choose:first-child{
+    left: 0;
+}
+.choose a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.choose img {
+    width: 100%;
+    height: 100%;
+}
+div.button-prev{
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    right: auto;
+    left: 10px;
+    top: 50%;
+    z-index: 999;
+}
+div.button-next{
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    right: 10px;
+    left: auto;
+    top: 50%;
+    z-index: 999;
+}
+.pagelist{
+    position: absolute;
+    width: 100%;
+    height: 26px;
+    padding: 0;
+    line-height: 40px;
+    bottom: 25px;
+    text-align: center;
+    z-index: 999;
+}
+.pagelist li{
+    display: block;
+    border-radius: 10px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin:9px 7px ;
+    background: #fff;
+    opacity: .9;
+    cursor: pointer;
+    transition: all .8s;
+}
+.pagelist li.hot{
+    background-color: #41b2fc;
+}
